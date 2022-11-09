@@ -24,7 +24,8 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Backend for in app currency using [Nest](https://github.com/nestjs/nest) framework.
+
 
 ## Installation
 
@@ -44,6 +45,17 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## Dockerize
+
+```bash
+# development
+$ docker-compose up dev
+
+# production
+$ docker-compose up prod
+```
+
 
 ## Test
 
