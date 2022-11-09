@@ -26,6 +26,13 @@
 
 Backend for in app currency using [Nest](https://github.com/nestjs/nest) framework.
 
+## Features
+  - Signin and Signup with username and password with session authentication
+  - Add money to wallet
+  - Pay money through wallet
+  - Validate transaction
+  - Authorize api routes with guards
+  - List transactions
 
 ## Installation
 
