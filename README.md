@@ -34,6 +34,15 @@ Backend for in app currency using [Nest](https://github.com/nestjs/nest) framewo
   - Authorize api routes with guards
   - List transactions
 
+## Available APIs
+  - `/users/signup` Create a new user and authenticate user (requires **username** and **password** in request body)
+  - `/users/login` Login existing user and authenticate user (requires **username** and **password** in request body)
+  - `/transactions/top-up` Add money to wallet of current authenticated user (requires **amount** in request body)
+  - `/transactions/withdraw` Pay money through wallet of current authenticated user (requires **amount** in request body)
+  - `/transactions/list` (requires user to be authenticated)
+  
+
+
 ## Installation
 
 ```bash
