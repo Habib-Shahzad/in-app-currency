@@ -35,6 +35,7 @@ export class UsersController {
         userId: result._id,
         userName: result.username,
       };
+      // Add the user to the session
       req.login(user, (err) => {
         if (err) {
           res.status(401).send("unauthorized");
@@ -48,6 +49,7 @@ export class UsersController {
   }
 
   //Post / Login
+  // Add the user to the session and return the user
   @UseGuards(LocalAuthGuard)
   @Post("/login")
   login(@Request() req): any {
@@ -55,6 +57,7 @@ export class UsersController {
   }
 
   //Get / protected
+  // Testing the authentication guard
   @UseGuards(AuthenticatedGuard)
   @Get("/protected")
   getUser(@Request() req): string {
@@ -62,6 +65,7 @@ export class UsersController {
   }
 
   //Get / logout
+  // Destroy the session
   @Get("/logout")
   logout(@Request() req): any {
     req.session.destroy();

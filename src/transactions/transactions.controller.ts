@@ -14,19 +14,13 @@ import { transactionTypeEnum } from "./transactions.model";
 export class TransactionsController {
   constructor(private readonly usersService: TransactionsService) {}
 
-  //post/ top-up
+  //post/ Add money to wallet
   @UseGuards(AuthenticatedGuard)
   @Post("/top-up")
-  async topUp(
-    @Request() req,
-    @Body("amount") amount: number,
-    @Body("username") username: string
-  ) {
-    if (req.user.userName != username) {
-      return {
-        message: "You are not authorized to top up this user",
-      };
-    }
+  async topUp(@Request() req, @Body("amount") amount: number) {
+    // Get the username of current authenticated user
+    const username = req.user.userName;
+
     const result = await this.usersService.createTransaction(
       username,
       amount,
@@ -35,17 +29,14 @@ export class TransactionsController {
     return result;
   }
 
-  //post/ withdraw
+  //post/ Pay money through wallet
   @UseGuards(AuthenticatedGuard)
   @Post("/withdraw")
-  async withdraw(
-    @Request() req,
-    @Body("amount") amount: number,
-    @Body("username") username: string
-  ) {
-    if (req.user.userName != username) {
-      return "You can only withdraw from your own account";
-    }
+  async withdraw(@Request() req, @Body("amount") amount: number) {
+
+    // Get the username of current authenticated user
+    const username = req.user.userName;
+
     const result = await this.usersService.createTransaction(
       username,
       amount,
@@ -54,7 +45,7 @@ export class TransactionsController {
     return result;
   }
 
-  //Get / transactions
+  //Get / List all transactions of authenticated user
   @UseGuards(AuthenticatedGuard)
   @Get("/list")
   async getTransactions(@Request() req) {

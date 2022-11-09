@@ -6,18 +6,25 @@ import * as bcrypt from "bcrypt";
 export class AuthService {
   constructor(private readonly usersService: UsersService) {}
 
+  // Validate user method
   async validateUser(username: string, password: string): Promise<any> {
     const user = await this.usersService.getUser(username);
     if (!user) {
       throw new NotAcceptableException("could not find the user");
     }
+
+    // compare the password with the hashed password
     const passwordValid = await bcrypt.compare(password, user.password);
+
+    // if the password is valid, return the user
     if (user && passwordValid) {
       return {
         userId: user.id,
         userName: user.username,
       };
     }
+
+    // if the password is not valid, return null
     return null;
   }
 }

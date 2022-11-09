@@ -6,6 +6,9 @@ import { transactionTypeEnum } from "../transactions/transactions.model";
 export class WalletService {
   constructor() {}
 
+  // Validate the amount to be added or withdrawn
+  // Amount should be greater than 0 for all transactions
+  // Amount should be less than or equal to wallet balance for payment transactions
   validateAmount(amount: number, balance: number, type: transactionTypeEnum) {
     if (amount <= 0) {
       throw new HttpException(
@@ -18,12 +21,14 @@ export class WalletService {
     }
   }
 
+  // Add money to wallet
   async addMoney(user: User | UserModel, amount: number) {
     user.walletBalance += amount;
     await user.save();
     return user.walletBalance;
   }
 
+  // Withdraw money from wallet
   async withdrawMoney(user: User | UserModel, amount: number) {
     user.walletBalance -= amount;
     await user.save();
