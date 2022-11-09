@@ -2,8 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 import { Transaction, transactionTypeEnum } from "./transactions.model";
-import { UsersService } from "src/users/users.service";
-import { WalletService } from "src/wallet/wallet.service";
+import { UsersService } from "../users/users.service";
+import { WalletService } from "../wallet/wallet.service";
 
 @Injectable()
 export class TransactionsService {

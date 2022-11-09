@@ -1,6 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from "@nestjs/common";
-import { User } from "src/users/users.model";
-import { transactionTypeEnum } from "src/transactions/transactions.model";
+import { User, UserModel } from "../users/users.model";
+import { transactionTypeEnum } from "../transactions/transactions.model";
 
 @Injectable()
 export class WalletService {
@@ -18,13 +18,13 @@ export class WalletService {
     }
   }
 
-  async addMoney(user: User, amount: number) {
+  async addMoney(user: User | UserModel, amount: number) {
     user.walletBalance += amount;
     await user.save();
     return user.walletBalance;
   }
 
-  async withdrawMoney(user: User, amount: number) {
+  async withdrawMoney(user: User | UserModel, amount: number) {
     user.walletBalance -= amount;
     await user.save();
     return user.walletBalance;

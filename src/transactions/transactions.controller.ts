@@ -7,7 +7,7 @@ import {
   Request,
 } from "@nestjs/common";
 import { TransactionsService } from "./transactions.service";
-import { AuthenticatedGuard } from "src/auth/authenticated.guard";
+import { AuthenticatedGuard } from "../auth/authenticated.guard";
 import { transactionTypeEnum } from "./transactions.model";
 
 @Controller("transactions")

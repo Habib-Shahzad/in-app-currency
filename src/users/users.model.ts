@@ -24,3 +24,19 @@ export interface User extends mongoose.Document {
   password: string;
   walletBalance: number;
 }
+
+
+
+export class UserModel {
+  constructor(
+    public username: string,
+    public password: string,
+    public walletBalance: number
+  ) {
+    this.username = username;
+    this.password = password;
+    this.walletBalance = walletBalance;
+  }
+
+  save() {}
+}

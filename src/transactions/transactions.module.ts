@@ -3,8 +3,8 @@ import { TransactionsService } from "./transactions.service";
 import { TransactionsController } from "./transactions.controller";
 import { MongooseModule } from "@nestjs/mongoose";
 import { TransactionSchema } from "./transactions.model";
-import { UsersModule } from "src/users/users.module";
-import { WalletModule } from "src/wallet/wallet.module";
+import { UsersModule } from "../users/users.module";
+import { WalletModule } from "../wallet/wallet.module";
 
 @Module({
   imports: [
