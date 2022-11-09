@@ -39,8 +39,8 @@ Backend for in app currency using [Nest](https://github.com/nestjs/nest) framewo
   - `/users/login` Login existing user and authenticate user (requires **username** and **password** in request body)
   - `/transactions/top-up` Add money to wallet of current authenticated user (requires **amount** in request body)
   - `/transactions/withdraw` Pay money through wallet of current authenticated user (requires **amount** in request body)
-  - `/transactions/list` (requires user to be authenticated)
-  
+  - `/transactions/list` List transactions of current authenticated user (requires user to be authenticated)
+
 
 
 ## Installation
